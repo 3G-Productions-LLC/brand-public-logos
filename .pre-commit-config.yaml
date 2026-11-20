@@ -1,0 +1,16 @@
+# gitleaks runs as a system hook using the official release binary (winget: Gitleaks.Gitleaks),
+# and pre-commit-hooks run via python -m, so no locally built executables are needed.
+repos:
+  - repo: local
+    hooks:
+      - id: gitleaks
+        name: gitleaks (official release binary)
+        entry: gitleaks git --pre-commit --redact --staged --verbose
+        language: system
+        pass_filenames: false
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: no-commit-to-branch
+        args: [--branch, main, --branch, develop]
+        entry: python -m pre_commit_hooks.no_commit_to_branch

@@ -1,0 +1,3 @@
+[extend]
+# Project-specific rules go here when a project secret format appears.
+useDefault = true
