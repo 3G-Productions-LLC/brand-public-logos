@@ -16,7 +16,8 @@ A separate public repository, `brand-public-logos`, holds byte-for-byte copies o
 
 ## Consequences
 - Each logo has a stable public URL. A file name can't change without breaking the platforms that link to it.
-- Anything committed here is public, so the repository holds only the logos and the files that describe them. Secret scanning runs before every commit.
+- Anything committed here is public, so the repository holds only the logos and the files that describe them. A local gitleaks hook scans each commit, and GitHub secret scanning with push protection is on.
 - A logo change is made in the design system first, then copied here. The README records each file's SHA-256 so a copy can be checked.
 - Pages builds run on GitHub Actions, which is free for public repositories.
 - A custom domain can be added later with a DNS record, but that would change the URLs platforms already use.
+- Commits use a GitHub noreply address. The first push exposed a company email address, so the repository was deleted and recreated; a force-push could not have removed it.
